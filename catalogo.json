@@ -1,0 +1,28 @@
+[
+  {
+    "codigo":"OBR-000001",
+    "titulo":"Cor Sacratissimum Jesu",
+    "compositor":"F. Delsart",
+    "arreglador":"",
+    "tiempo":["Todo el año"],
+    "uso":["Comunión","Acción de gracias","Adoración"],
+    "formacion":["SATB"],
+    "instrumentacion":"Órgano",
+    "genero":"Polifonía",
+    "material":"https://drive.google.com/drive/folders/1_bSar7Km82EN9zhQUJgzJohyTpqHTWxM",
+    "preview":""
+  },
+  {
+    "codigo":"OBR-000002",
+    "titulo":"Aleluya III",
+    "compositor":"F. Delsart",
+    "arreglador":"",
+    "tiempo":["Todo el año"],
+    "uso":["Aleluya / Aclamación al Evangelio"],
+    "formacion":["SATB"],
+    "instrumentacion":"Órgano",
+    "genero":"Polifonía",
+    "material":"https://drive.google.com/drive/folders/14ARI4RIrtAA3BcSfQZXiKUFGxn4yYO0X",
+    "preview":""
+  }
+]
