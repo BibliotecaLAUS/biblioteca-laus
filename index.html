@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Biblioteca online gratuita de música litúrgica.">
+  <title>Biblioteca LAUS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand">Biblioteca LAUS</p>
+    <p class="tagline">Música litúrgica · partituras y materiales de libre consulta</p>
+  </div>
+</header>
+<main class="wrap">
+  <section class="intro">
+    <h1>Biblioteca de música litúrgica</h1>
+    <p>Buscá repertorio por título, autor, tiempo litúrgico, uso o formación vocal.</p>
+  </section>
+
+  <section class="tools" aria-label="Búsqueda y filtros">
+    <label class="search"><span>Buscar</span><input id="search" type="search" placeholder="Título, compositor, arreglador…" autocomplete="off"></label>
+    <div class="filters">
+      <label>Tiempo litúrgico<select id="tiempo"><option value="">Todos</option></select></label>
+      <label>Uso litúrgico<select id="uso"><option value="">Todos</option></select></label>
+      <label>Formación vocal<select id="formacion"><option value="">Todas</option></select></label>
+    </div>
+  </section>
+
+  <div class="results-line"><strong id="count"></strong><button id="clear" class="text-button" type="button">Limpiar filtros</button></div>
+  <section id="works" class="works" aria-live="polite"></section>
+</main>
+
+<div id="previewModal" class="modal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+    <header class="modal-header">
+      <div><h2 id="previewTitle"></h2><p id="previewAuthor"></p></div>
+      <button class="icon-button close" type="button" data-close aria-label="Cerrar preview">×</button>
+    </header>
+    <div class="preview-stage">
+      <div id="previewPlaceholder" class="preview-placeholder">
+        <span>Vista previa</span>
+        <strong>La primera página de la partitura aparecerá aquí.</strong>
+        <small>El visor ya funciona como popup real, sin abandonar la búsqueda.</small>
+      </div>
+      <img id="previewImage" alt="" hidden>
+    </div>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
