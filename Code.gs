@@ -126,6 +126,8 @@ function procesarObrasNuevas() {
 
     const cNotas = col('Notas');
 
+    const cEstado = col('Estado');
+
 
 
 
@@ -162,7 +164,9 @@ function procesarObrasNuevas() {
 
       'Carpeta Drive URL': cCarpetaURL,
 
-      Notas: cNotas
+      Notas: cNotas,
+
+      Estado: cEstado
 
 
 
@@ -305,6 +309,30 @@ function procesarObrasNuevas() {
       const obraID = String(fila[cID]);
 
       idsActuales.add(obraID);
+
+
+
+      // ─────────────────────────────────
+      // ESTADO DE PROCESAMIENTO
+      // ─────────────────────────────────
+
+      const estado = String(fila[cEstado] || '').trim();
+
+      // Las filas ya procesadas no requieren trabajo.
+      if (estado === 'Procesado') {
+        continue;
+      }
+
+      // "Para revisar" queda deliberadamente fuera
+      // del procesamiento automático hasta que una
+      // persona la vuelva a marcar "Para procesar".
+      if (estado === 'Para revisar') {
+        continue;
+      }
+
+      // Compatibilidad inicial: una fila antigua sin
+      // estado se procesa una vez y luego queda marcada.
+
 
 
 
@@ -804,9 +832,8 @@ function procesarObrasNuevas() {
 
 
 
-        // Un problema en la ficha técnica
-
-        // NO debe detener el resto del sistema.
+        // Un problema en la ficha técnica requiere
+        // revisión humana, pero no detiene las demás obras.
 
         console.error(
 
@@ -820,9 +847,23 @@ function procesarObrasNuevas() {
 
         );
 
+        hoja
+          .getRange(i + 1, cEstado + 1)
+          .setValue('Para revisar');
+
+        continue;
+
 
 
       }
+
+
+
+      // Solo marcar como procesado cuando toda la obra
+      // terminó correctamente.
+      hoja
+        .getRange(i + 1, cEstado + 1)
+        .setValue('Procesado');
 
 
 
