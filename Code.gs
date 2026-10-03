@@ -1220,33 +1220,22 @@ function generarFichaTecnicaSiHaceFalta_(
 
 
 
-    // Crear primero el PDF nuevo.
+    // Si ya existe la ficha, actualizar su contenido
+    // conservando el mismo archivo y el mismo ID de Drive.
+    // Si todavía no existe, crearla normalmente.
 
-    const pdfNuevo =
+    if (fichaExistente) {
+
+      Drive.Files.update(
+        { name: nombrePDF },
+        fichaExistente.getId(),
+        pdfBlob,
+        { fields: 'id,name' }
+      );
+
+    } else {
 
       carpetaDestino.createFile(pdfBlob);
-
-
-
-
-
-    // Solo después de crear correctamente el nuevo,
-
-    // enviar la ficha anterior a Papelera.
-
-    if (
-
-      fichaExistente &&
-
-      fichaExistente.getId() !== pdfNuevo.getId()
-
-    ) {
-
-
-
-      fichaExistente.setTrashed(true);
-
-
 
     }
 
